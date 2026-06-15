@@ -9,3 +9,22 @@ Promises print before setTimeout because Promises go into a microtask queue that
 
 # **What does "non-blocking" actually mean ? **
 Non-blocking means it doesn't block tasks that can execute faster just for other tasks that take time to execute, it executes the sync tasks before the async tasks instead of just blokcing the sync tasks it runs them in the background via libuv 
+
+## Bonus Challenge
+``` 
+console.log("A");
+
+setTimeout(() => console.log("B"), 0);
+
+Promise.resolve().then(() => {
+  console.log("C");
+  setTimeout(() => console.log("D"), 0);
+});
+
+console.log("E");
+```
+
+Predicted : AECDB
+Actual : AECDB
+
+Why : Promise microtask runs before setTimeout callback.The setTimeout inside promise is scheduled AFTER the outer setTimeout, so it goes behind it in the callback queue.
