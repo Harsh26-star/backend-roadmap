@@ -1,0 +1,12 @@
+{
+  "success": 1944,
+  "failed": 1996,
+  "connected": 1926,
+  "response": 2044,
+  "error": 2094,
+  "timeout": 1931,
+  "request": 2001,
+  "null": 2095,
+  "info": 2005,
+  "warning": 1964
+}
